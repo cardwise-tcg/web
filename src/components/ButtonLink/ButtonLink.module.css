@@ -1,0 +1,17 @@
+.button-link {
+    display: inline-block;
+    background: var(--color-primary);
+    color: var(--color-light);
+    padding: 12px 24px;
+    border-radius: 4px;
+    border-bottom: 4px solid var(--color-secondary);
+    border-right: 4px solid var(--color-secondary);
+}
+
+.button-link:hover,
+.button-link:focus {
+    background: var(--color-secondary);
+    color: var(--color-light);
+    border-bottom: 4px solid var(--color-primary);
+    border-right: 4px solid var(--color-primary);
+}

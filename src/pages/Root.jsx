@@ -1,24 +1,41 @@
-import './Root.css';
-import Header from '../components/Header';
-
 import {useOutlet} from 'react-router-dom';
+
+import styles from './Root.module.css';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import ButtonLink from '../components/ButtonLink';
+
 
 const Root = () => {
     const outlet = useOutlet();
 
     return (
-        <div className="app-container">
+        <div className={[styles.appContainer, !outlet ? styles.center : {}].join(' ')}>
             <Header/>
             {
                 outlet ||
                 (
-                    <main>
+                    <main className={styles.home}>
                         <h1>
-                            Welcome to CardWise: Flashcards for TCGs!
+                            CardWise
                         </h1>
+                        <h2 className={styles.motto}>
+                            Master the TCGs you play, one card at a time.
+                        </h2>
+
+                        <p>
+                            Dive into the world of Trading Card Games like never before! <strong>CardWise</strong> is your ultimate digital companion, transforming the way you learn and master your favorite TCGs.
+                        </p>
+
+                        <ButtonLink
+                            text="&raquo; Explore supported games"
+                            to="/games"
+                            containerStyle={styles.exploreBtn}
+                        />
                     </main>
                 )
             }
+            <Footer/>
         </div>
     );
 };
