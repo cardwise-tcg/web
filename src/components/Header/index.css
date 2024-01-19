@@ -1,0 +1,18 @@
+header {
+    display: flex;
+    justify-content: space-between;
+}
+header .logo {
+    font-size: 24px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #1f2023;
+}
+
+header nav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
