@@ -1,6 +1,7 @@
 @import "normalize.css";
 
 :root {
+    font-size: 0.8rem;
     --color-text: #2e2e2e;
     --color-muted: #656464;
     --color-primary: #395ca7;
@@ -45,4 +46,11 @@ a {
 
 a:hover {
     color: var(--color-secondary);
+}
+
+@media screen and (min-width: 768px) {
+    :root {
+        font-size: 1.2rem;
+    }
+
 }
