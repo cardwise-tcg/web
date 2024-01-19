@@ -1,7 +1,7 @@
 
 # CardWise
 
-[![Deploy to GitHub Pages](https://github.com/fakeheal/cardwise/actions/workflows/deploy.yml/badge.svg)](https://github.com/fakeheal/cardwise/actions/workflows/deploy.yml)
+[![Deploy on "Live"](https://github.com/fakeheal/cardwise/actions/workflows/deploy.yml/badge.svg)](https://github.com/fakeheal/cardwise/actions/workflows/deploy.yml)
 
 Dive into the world of Trading Card Games like never before! CardWise is your ultimate digital companion, transforming the way you learn and master your favorite TCGs.
 
