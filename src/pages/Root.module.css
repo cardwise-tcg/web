@@ -17,14 +17,13 @@
 
 .app-container .home h1 {
     text-align: center;
-    font-size: 42px;
-    line-height: 42px;
+    font-size: 2.5rem;
     color: var(--color-primary);
 }
 
 .app-container .home .motto {
     text-align: center;
-    font-size: 18px;
+    font-size: 1.5rem;
     font-style: italic;
 }
 
