@@ -1,48 +1,48 @@
 @import "normalize.css";
 
 :root {
-  --color-text: #2e2e2e;
-  --color-muted: #656464;
-  --color-primary: #395ca7;
-  --color-secondary: #223868;
-  --color-background: #D6E0EC;
-  --color-light: #FFFFFF;
-  --color-accent: #FBD74E;
+    --color-text: #2e2e2e;
+    --color-muted: #656464;
+    --color-primary: #395ca7;
+    --color-secondary: #223868;
+    --color-background: #D6E0EC;
+    --color-light: #FFFFFF;
+    --color-accent: #FBD74E;
+    --color-accent-secondary: #d5ac13;
 
-  --breakpoint-mobile: 480px;
-  --breakpoint-tablet: 768px;
-  --breakpoint-desktop: 1024px;
+    --breakpoint-mobile: 480px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
 
-  font-family: 'Roboto', sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+    font-family: 'Ubuntu', sans-serif;
+    line-height: 1.5;
+    font-weight: 400;
 
-  color-scheme: light dark;
-  color: var(--color-text);
-  background-color: var(--color-background);
+    color: var(--color-text);
+    background-color: var(--color-background);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 a {
-  font-weight: bold;
-  color: var(--color-primary);
-  text-decoration: inherit;
+    font-weight: bold;
+    color: var(--color-primary);
+    text-decoration: inherit;
 }
 
 a:hover {
-  color: var(--color-secondary);
+    color: var(--color-secondary);
 }

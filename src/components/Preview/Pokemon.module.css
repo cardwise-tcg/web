@@ -1,0 +1,50 @@
+.pokemon {
+    position: relative;
+}
+
+.pokemon .hide-type {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 12px;
+    right: 13px;
+    border-top-right-radius: 6px;
+    background-color: var(--color-primary);
+}
+
+.pokemon .hide-hp {
+    width: 40px;
+    height: 30px;
+    position: absolute;
+    top: 12px;
+    right: 42px;
+    background-color: var(--color-primary);
+}
+
+.pokemon .hide-attack {
+    height: 160px;
+    position: absolute;
+    top: 225px;
+    left: 12px;
+    right: 13px;
+    background-color: var(--color-primary);
+}
+
+.pokemon .hide-retreat {
+    width: 85px;
+    height: 15px;
+    position: absolute;
+    bottom: 55px;
+    right: 13px;
+    background-color: var(--color-primary);
+}
+
+.pokemon .hide-regulation {
+    width: 18px;
+    height: 18px;
+    position: absolute;
+    bottom: 18px;
+    left: 12px;
+    border-bottom-left-radius: 6px;
+    background-color: var(--color-primary);
+}

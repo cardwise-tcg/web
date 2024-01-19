@@ -1,0 +1,54 @@
+.page-setup {
+    padding: 20px 0;
+}
+
+.page-setup .description {
+
+}
+
+.page-setup .preview-container {
+    margin-top: 20px;
+}
+
+
+.page-setup .preview-container .preview {
+    text-align: center;
+}
+
+.page-setup .preview-container .fields {
+    display: flex;
+    flex-direction: column;
+    flex: 0 1 30%;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.page-setup .preview-container .fields .search {
+    width: 100%;
+    height: 42px;
+}
+
+.page-setup .preview-container .fields .field {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.page-setup .preview-container .fields .generate-btn {
+    width: 100%;
+}
+
+
+@media screen and (min-width: 768px) {
+    .page-setup .preview-container {
+        display: flex;
+        justify-content: space-evenly;
+        margin-top: 40px;
+    }
+
+
+    .page-setup .preview-container .preview {
+        flex: 0 1 30%;
+    }
+
+}

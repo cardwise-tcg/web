@@ -28,10 +28,10 @@ const Root = () => {
                         </p>
 
                         <ButtonLink
-                            text="&raquo; Explore supported games"
                             to="/games"
-                            containerStyle={styles.exploreBtn}
-                        />
+                            containerStyle={styles.exploreBtn}>
+                            &raquo; Explore supported games
+                        </ButtonLink>
                     </main>
                 )
             }
