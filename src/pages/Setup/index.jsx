@@ -1,18 +1,22 @@
+import { useContext, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import config from '../../config/games';
 import styles from './Setup.module.css';
 import { SelectedGameContext } from '../../contexts/SelectedGameContext';
-import { useContext, useEffect, useState } from 'react';
-import { useNavigate } from "react-router-dom";
-import config from "../../config/games";
-import ProgressBar from "../../components/ProgressBar";
-import Preview from "../../components/Preview";
-import Button from "../../components/Button";
+import { QuizSettingsContext } from '../../contexts/QuizSettingsContext';
+import ProgressBar from '../../components/ProgressBar';
+import Preview from '../../components/Preview';
+import Button from '../../components/Button';
 
 
 const Setup = () => {
     const navigate = useNavigate();
     const { game } = useContext(SelectedGameContext);
+    const { setSelectedFields, setSelectedSource } = useContext(QuizSettingsContext);
     const [settings, setSettings] = useState(null);
     const [fields, setFields] = useState(null);
+    const [source, setSource] = useState('');
 
     useEffect(() => {
         if (game === null) {
@@ -52,6 +56,21 @@ const Setup = () => {
         );
     }
 
+    const handleButtonClicked = () => {
+        if (fields?.filter(field => field.checked).length === 0) {
+            return;
+        }
+
+        if (source.trim() === '') {
+            return;
+        }
+
+        setSelectedFields(fields);
+        setSelectedSource(source);
+        navigate('/quiz');
+    }
+
+
     if (!settings || !fields) {
         return <ProgressBar/>;
     }
@@ -74,7 +93,12 @@ const Setup = () => {
                     />
                 </div>
                 <div className={styles.fields}>
-                    <input type={"text"} placeholder="Set name / Deck URL" className={styles.search}/>
+                    <input
+                        type="text"
+                        placeholder="Set name / Deck URL"
+                        className={styles.search}
+                        onChange={(event) => setSource(event.target.value)}
+                    />
                     {fields.map((field) => (
                         <div key={field.key} className={styles.field}>
                             <label htmlFor={field.key}>{field.name}</label>
@@ -88,7 +112,7 @@ const Setup = () => {
                         </div>
                     ))}
 
-                    <Button containerStyle={styles.generateBtn} onClick={() => alert('Work in progress!')}>
+                    <Button containerStyle={styles.generateBtn} onClick={handleButtonClicked}>
                         Generate
                     </Button>
                 </div>

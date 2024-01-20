@@ -13,6 +13,8 @@ import About from './pages/About';
 import Error from './pages/Error';
 import SelectedGameProvider from "./contexts/SelectedGameContext";
 import Setup from "./pages/Setup";
+import Quiz from "./pages/Quiz";
+import QuizSettingsProvider from "./contexts/QuizSettingsContext";
 
 const router = createBrowserRouter([
     {
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
                 element: <Setup/>
             },
             {
+                path: "/quiz",
+                element: <Quiz/>
+            },
+            {
                 path: "/about",
                 element: <About/>
             }
@@ -39,7 +45,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
         <SelectedGameProvider>
-            <RouterProvider router={router}/>
+            <QuizSettingsProvider>
+                <RouterProvider router={router}/>
+            </QuizSettingsProvider>
         </SelectedGameProvider>
     </React.StrictMode>,
 )
