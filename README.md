@@ -12,7 +12,7 @@ Dive into the world of Trading Card Games like never before! CardWise is your ul
 > Project is done as an assignment for the [CITB558 Web programming with HTML and JS](https://ecatalog.nbu.bg/default.asp?V_Year=2023&YSem=3&Spec_ID=&Mod_ID=&PageShow=coursepresent&P_Menu=courses_part1&Fac_ID=3&M_PHD=0&P_ID=832&TabIndex=1&K_ID=42289&K_TypeID=10&l=1) course at [NBU](https://nbu.bg).
 
 ## Supported TCGs
-- [**Disney Lorcana**](https://www.disneylorcana.com/en-US) (_completed_)
+- [**Disney Lorcana**](https://www.disneylorcana.com/en-US) (_in progress_)
 - [**Pokemon TCG**](https://www.pokemon.com/us/pokemon-tcg) (_in progress_)
 - [**Star Wars: Unlimited**](http://unlimitedffg.com) (_planned_)
 

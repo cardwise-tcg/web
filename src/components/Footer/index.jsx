@@ -6,7 +6,7 @@ const Footer = () => {
                 made with ❤️ by <a href="https://itodorova.dev">Ivanka Todorova</a>
             </div>
             <div>
-                source code at <a href="https://github.com/fakeheal/cardwise">github</a>
+                source code at <a href="https://github.com/cardwise-tcg/web">github</a>
             </div>
         </footer>
     )
