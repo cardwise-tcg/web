@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import ToggleButton from 'react-toggle-button';
 import config from '../../config/games';
 import styles from './Setup.module.css';
 import { SelectedGameContext } from '../../contexts/SelectedGameContext';
@@ -16,7 +16,10 @@ const Setup = () => {
     const { setSelectedFields, setSelectedSource } = useContext(QuizSettingsContext);
     const [settings, setSettings] = useState(null);
     const [fields, setFields] = useState(null);
-    const [source, setSource] = useState('');
+    const [sourceType, setSourceType] = useState('');
+    const [cards, setCards] = useState('');
+    const [cardSet,setCardSet] = useState('');
+    const [maxNumberOfQuestions, setMaxNumberOfQuestions] = useState(10);
 
     useEffect(() => {
         if (game === null) {
@@ -45,11 +48,11 @@ const Setup = () => {
         );
     }, [settings, settings?.fields]);
 
-    const handleFieldChange = (event, key) => {
+    const handleFieldChange = (value, key) => {
         setFields(
             fields.map(field => {
                 if (field.key === key) {
-                    field.checked = event.target.checked;
+                    field.checked = value;
                 }
                 return field;
             })
@@ -58,15 +61,17 @@ const Setup = () => {
 
     const handleButtonClicked = () => {
         if (fields?.filter(field => field.checked).length === 0) {
+            alert('Please select at least one field.')
             return;
         }
 
-        if (source.trim() === '') {
+        if (sourceType.trim() === '') {
+            alert('Please select a source of cards.');
             return;
         }
 
         setSelectedFields(fields);
-        setSelectedSource(source);
+        setSelectedSource(sourceType === 'set' ? cardSet : cards);
         navigate('/quiz');
     }
 
@@ -81,41 +86,108 @@ const Setup = () => {
                 {settings.name} &raquo; Setup
             </h2>
             <p className={styles.description}>
-                Toggle the fields you want to include in your flashcards. Use the preview to see how your
-                flashcards will look like. You can either type the name of a released Pokemon set or paste a deck URL.
+                Toggle the fields you want to include in your quiz. Use the preview to see how your
+                hints will look like.
             </p>
-            <div className={styles.previewContainer}>
-                <div className={styles.preview}>
-                    <Preview
-                        game={game}
-                        image={settings.preview}
-                        hide={fields.filter(field => field.checked).map(field => field.key)}
-                    />
+            <div className={styles.twoColumns}>
+                <div className={styles.column}>
+                    <div className={styles.preview}>
+                        <h3>
+                            Preview
+                        </h3>
+                        <Preview
+                            game={game}
+                            image={settings.preview}
+                            hide={fields.filter(field => field.checked).map(field => field.key)}
+                        />
+                    </div>
                 </div>
-                <div className={styles.fields}>
-                    <input
-                        type="text"
-                        placeholder="Set name / Deck URL"
-                        className={styles.search}
-                        onChange={(event) => setSource(event.target.value)}
-                    />
-                    {fields.map((field) => (
-                        <div key={field.key} className={styles.field}>
-                            <label htmlFor={field.key}>{field.name}</label>
+                <div className={styles.column}>
+                    <div className={styles.fields}>
+                        <h3>
+                            Fields
+                        </h3>
+                        {fields.map((field) => (
+                            <div key={field.key} className={styles.field}>
+                                <label htmlFor={field.key}>{field.name}</label>
+                                <ToggleButton
+                                    activeLabel={''}
+                                    inactiveLabel={''}
+                                    value={ field.checked }
+                                    onToggle={(value) => handleFieldChange(!value, field.key)}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+            <div className={styles.twoColumns}>
+                <div className={styles.column}>
+                    <div className={styles.cardsContainer}>
+                        <h3>
+                            Cards
+                        </h3>
+                        <select
+                            className={styles.sourceSelect}
+                            name="source"
+                            id="source"
+                            onChange={(e) => setSourceType(e.target.value)}
+                        >
+                            <option>Select source</option>
+                            <option value="set">Official Set</option>
+                            <option value="decklist">Deck List</option>
+                        </select>
+                        {
+                            sourceType === 'set' && (
+                                settings.sets.map((set) => (
+                                  <div key={set.key} className={styles.setRadio}>
+                                      <label htmlFor={set.key}>{set.name}</label>
+                                      <input type="radio" name="set" id={set.key} value={set.key} onChange={(e) => setCardSet(e.target.value)}/>
+                                  </div>
+                                ))
+                            )
+                        }
+                        {
+                            sourceType === 'decklist' && (
+                                <textarea
+                                    className={styles.cardsTextarea}
+                                    value={cards}
+                                    onChange={(e) => setCards(e.target.value)}
+                                />
+                            )
+                        }
+                    </div>
+                </div>
+                <div className={styles.column}>
+                    <div className={styles.cardsContainer}>
+                        <h3>
+                            Settings
+                        </h3>
+                        <div className={styles.setting}>
+                            <label htmlFor="max-number-of-questions">
+                                Max. number of questions:
+                                <strong>{maxNumberOfQuestions}</strong>
+                            </label>
                             <input
-                                type="checkbox"
-                                id={field.key}
-                                name={field.key}
-                                checked={field.checked}
-                                onChange={(e) => handleFieldChange(e, field.key)}
+                                type="range"
+                                min="1"
+                                max="30"
+                                value={maxNumberOfQuestions}
+                                onChange={e => setMaxNumberOfQuestions(e.target.value)} className="slider"
+                                id="max-number-of-questions"
+                                disabled
                             />
+                            <small><em>disabled: work in progress</em></small>
                         </div>
-                    ))}
-
-                    <Button containerStyle={styles.generateBtn} onClick={handleButtonClicked}>
-                        Generate
-                    </Button>
+                        <span><em><small>more settings to come...</small></em></span>
+                    </div>
                 </div>
+            </div>
+
+            <div className={styles.buttonContainer}>
+                <Button containerStyle={styles.generateBtn} onClick={handleButtonClicked}>
+                    Generate
+                </Button>
             </div>
         </div>
     );

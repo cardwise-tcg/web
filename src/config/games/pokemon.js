@@ -1,7 +1,7 @@
 import preview from '../../assets/pokemon/setup.webp';
 
 export default {
-    is_available: true,
+    is_available: false,
     name: 'Pokémon TCG',
     preview,
     fields: [
@@ -30,5 +30,8 @@ export default {
             name: 'Regulation Mark',
             type: 'enum',
         },
+    ],
+    sets: [
+
     ]
 };

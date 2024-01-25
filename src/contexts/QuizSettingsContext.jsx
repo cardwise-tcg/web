@@ -1,3 +1,4 @@
+
 import { createContext, useEffect, useState } from 'react';
 
 export const QuizSettingsContext = createContext(null);
@@ -13,6 +14,9 @@ const QuizSettingsProvider = ({ children }) => {
         if (quizSettings?.fields && quizSettings?.source) {
             setFields(quizSettings.fields);
             setSource(quizSettings.source);
+        } else {
+            setFields(false);
+            setSource(false);
         }
     }, []);
 

@@ -4,6 +4,12 @@ export default {
     is_available: true,
     name: 'Lorcana',
     preview,
+    api: {
+        cards: 'https://api.cardwise.itodorova.dev/lorcana/cards',
+    },
+    cdn: {
+        cards: 'https://cdn.cardwise.itodorova.dev/lorcana',
+    },
     fields: [
         {
             key: 'ink',
@@ -67,5 +73,15 @@ export default {
             name: 'Text',
             type: 'text',
         }
+    ],
+    sets: [
+        {
+            key: 'tfc',
+            name: 'The First Chapter',
+        },
+        {
+            key: 'rfb',
+            name: 'Rise of the Floodborn'
+        },
     ]
 };

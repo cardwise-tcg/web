@@ -6,49 +6,99 @@
 
 }
 
-.page-setup .preview-container {
-    margin-top: 20px;
+.page-setup .two-columns {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
-
-.page-setup .preview-container .preview {
+.page-setup .column {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+.page-setup .preview {
     text-align: center;
 }
 
-.page-setup .preview-container .fields {
-    display: flex;
-    flex-direction: column;
-    flex: 0 1 30%;
-    gap: 10px;
-    margin: 20px 0;
+.page-setup .fields {
+    text-align: center;
 }
 
-.page-setup .preview-container .fields .search {
-    width: 100%;
-    height: 42px;
-}
-
-.page-setup .preview-container .fields .field {
+.page-setup .fields .field,
+.page-setup .set-radio,
+.page-setup .answer-radio {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
 }
 
+.page-setup .cards-container {
+    margin-top: 20px;
+    text-align: center;
+}
 
-.page-setup .preview-container .fields .generate-btn {
+.page-setup .settings-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.page-setup .cards-container .cards-textarea {
     width: 100%;
+    height: 200px;
+    resize: none;
+}
+.page-setup .cards-container .source-select {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.page-setup .setting {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.page-setup .setting label {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.page-setup .button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.page-setup .answer-radio{
+    margin-bottom: 0;
+    font-size: 1rem;
 }
 
 
 @media screen and (min-width: 768px) {
-    .page-setup .preview-container {
-        display: flex;
+    .page-setup .two-columns {
+        gap: 60px;
+        flex-direction: row;
         justify-content: space-evenly;
-        margin-top: 40px;
     }
 
+    .page-setup .preview-container .fields {
+        margin-top: 0;
+    }
 
     .page-setup .preview-container .preview {
         flex: 0 1 30%;
     }
 
+
+    .page-setup .cards-container {
+        margin-top: 40px;
+    }
+
+    .page-setup .button-container {
+        margin-top: 40px;
+    }
 }

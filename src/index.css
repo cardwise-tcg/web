@@ -11,7 +11,8 @@
     --color-accent: #FBD74E;
     --color-accent-secondary: #d5ac13;
 
-    --color-lorcana-background: #000;
+    --color-lorcana-background :var(--color-primary);
+    --color-pokemon-background: var(--color-primary);
 
     --breakpoint-mobile: 480px;
     --breakpoint-tablet: 768px;
