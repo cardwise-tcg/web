@@ -1,5 +1,6 @@
 import styles from './Preview.module.css';
-import Pokemon from "./Pokemon";
+import Pokemon from './Pokemon';
+import Lorcana from './Lorcana';
 
 const Preview = ({ image, game, hide }) => {
 
@@ -7,6 +8,13 @@ const Preview = ({ image, game, hide }) => {
 
     if (game === 'pokemon') {
         component = <Pokemon
+            image={image}
+            hide={hide}
+        />;
+    }
+
+    if (game === 'lorcana') {
+        component = <Lorcana
             image={image}
             hide={hide}
         />;

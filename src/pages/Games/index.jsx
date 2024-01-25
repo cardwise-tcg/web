@@ -25,8 +25,8 @@ const Games = () => {
             </h2>
             <div className={styles.gamesList}>
                 <div className={styles.game}>
-                    <Button onClick={() => handleGameClicked('pokemon')}>
-                        <img src={pokemon} alt="Pokemon"/>
+                    <Button onClick={() => handleGameClicked('lorcana')}>
+                        <img src={lorcana} alt="Lorcana"/>
                     </Button>
                 </div>
             </div>
@@ -35,8 +35,8 @@ const Games = () => {
             </h2>
             <div className={styles.gamesList}>
                 <div className={styles.game}>
-                    <Button onClick={() => handleGameClicked('lorcana')}>
-                        <img src={lorcana} alt="Lorcana"/>
+                    <Button onClick={() => handleGameClicked('pokemon')}>
+                        <img src={pokemon} alt="Pokemon"/>
                     </Button>
                 </div>
                 <div className={styles.game}>
