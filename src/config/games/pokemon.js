@@ -1,4 +1,4 @@
-import preview from '../../assets/pokemon-setup.webp';
+import preview from '../../assets/pokemon/setup.webp';
 
 export default {
     is_available: true,

@@ -1,4 +1,4 @@
-import preview from '../../assets/lorcana-setup.png';
+import preview from '../../assets/lorcana/setup.png';
 
 export default {
     is_available: true,
@@ -60,6 +60,11 @@ export default {
         {
             key: 'classifications',
             name: 'Classifications',
+            type: 'text',
+        },
+        {
+            key: 'text',
+            name: 'Text',
             type: 'text',
         }
     ]
