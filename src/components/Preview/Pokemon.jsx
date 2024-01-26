@@ -3,7 +3,6 @@ import { ucfirst } from "../../utilities/strings";
 
 const Pokemon = ({ image, hide }) => {
 
-    console.log(hide);
     return (
         <div className={styles.pokemon}>
             {

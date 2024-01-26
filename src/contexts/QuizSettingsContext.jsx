@@ -1,39 +1,69 @@
 
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useReducer, useState } from 'react';
+import config from '../config/games';
 
 export const QuizSettingsContext = createContext(null);
 
 const QUIZ_SETTINGS_KEY = 'quizSettings';
 
+const ACTION_UPDATE_FIELDS = 'updateFields';
+const ACTION_UPDATE_SOURCE = 'updateSource';
+const ACTION_UPDATE = 'update';
+
+export const QUESTION_TYPE_MULTIPLE = 'multiple';
+export const QUESTION_TYPE_CLOSED = 'closed';
+export const QUESTION_TYPE_MIXED = 'mixed';
+
+export const SOURCE_TYPE_SET = 'set';
+export const SOURCE_TYPE_DECK = 'deck';
+
+const initialQuizSettings = {
+    fields: null,
+    source: null,
+    sourceType: null,
+    maxNumberOfQuestions: 10,
+    questionType: 'multiple',
+};
+
+export const areSettingsValid = (quizSettings) => {
+    if(!quizSettings) return false;
+    if(!quizSettings.fields || !quizSettings.source) return false;
+    if(!quizSettings.sourceType) return false;
+
+    return true;
+};
+
+const quizSettingsReducer = (quizSettings, action) => {
+    switch (action.type) {
+        case ACTION_UPDATE_FIELDS:
+            return { ...quizSettings, fields: action.payload };
+        case ACTION_UPDATE_SOURCE:
+            return { ...quizSettings, source: action.payload };
+        case ACTION_UPDATE:
+            return action.payload;
+        default:
+            return quizSettings;
+    }
+}
+
 const QuizSettingsProvider = ({ children }) => {
-    const [fields, setFields] = useState(null);
-    const [source, setSource] = useState(null);
+    const [quizSettings, dispatch] = useReducer(quizSettingsReducer, initialQuizSettings, () => {
+        const quizSettings = JSON.parse(localStorage.getItem(QUIZ_SETTINGS_KEY));
+        return quizSettings ? quizSettings : initialQuizSettings;
+    });
 
     useEffect(() => {
-        const quizSettings = JSON.parse(localStorage.getItem(QUIZ_SETTINGS_KEY));
-        if (quizSettings?.fields && quizSettings?.source) {
-            setFields(quizSettings.fields);
-            setSource(quizSettings.source);
-        } else {
-            setFields(false);
-            setSource(false);
+        if(areSettingsValid(quizSettings)) {
+            localStorage.setItem(QUIZ_SETTINGS_KEY, JSON.stringify(quizSettings));
         }
-    }, []);
+    },[quizSettings]);
 
-    const setSelectedFields = (fields) => {
-        const quizSettings = JSON.parse(localStorage.getItem(QUIZ_SETTINGS_KEY));
-        localStorage.setItem(QUIZ_SETTINGS_KEY, JSON.stringify({ fields, ...quizSettings }));
-        setFields(fields);
-    };
-
-    const setSelectedSource = (source) => {
-        const quizSettings = JSON.parse(localStorage.getItem(QUIZ_SETTINGS_KEY));
-        localStorage.setItem(QUIZ_SETTINGS_KEY, JSON.stringify({ source, ...quizSettings }));
-        setSource(source);
+    const setQuizSettings = (value) => {
+        dispatch({ type: ACTION_UPDATE, payload: value});
     };
 
     return (
-        <QuizSettingsContext.Provider value={{ fields, source, setSelectedSource, setSelectedFields }}>
+        <QuizSettingsContext.Provider value={{ quizSettings, setQuizSettings }}>
             {children}
         </QuizSettingsContext.Provider>
     );

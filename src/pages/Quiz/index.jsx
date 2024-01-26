@@ -1,7 +1,11 @@
 import styles from './Quiz.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { SelectedGameContext } from '../../contexts/SelectedGameContext';
-import { QuizSettingsContext } from "../../contexts/QuizSettingsContext";
+import {
+    areSettingsValid,
+    QuizSettingsContext,
+    SOURCE_TYPE_SET
+} from '../../contexts/QuizSettingsContext';
 import { useNavigate } from 'react-router-dom';
 import config from '../../config/games';
 import ProgressBar from '../../components/ProgressBar';
@@ -10,34 +14,33 @@ import Preview from '../../components/Preview';
 const Quiz = () => {
     const navigate = useNavigate();
     const { game } = useContext(SelectedGameContext);
-    const { fields, source } = useContext(QuizSettingsContext);
+    const { quizSettings } = useContext(QuizSettingsContext);
     const [isLoading, setIsLoading] = useState(true);
     const [cards, setCards] = useState([]);
 
-
     useEffect(() => {
-        if(game === null || fields === null || source === null) {
+        if(game === null) {
             return;
         }
 
-        if (game === false) {
+        if (areSettingsValid(quizSettings) === false) {
             navigate('/games');
             return;
         }
 
-        if (fields === false || source === false) {
-            navigate('/setup');
-            return;
+        if(quizSettings.sourceType === SOURCE_TYPE_SET) {
+           if(!config[game].sets.filter(set => quizSettings.source === set.key).length) {
+               navigate('/setup');
+               return;
+           }
         }
 
         let params = ``;
 
-        // Is it a set?
-        if(config[game].sets.filter(set => source === set.key).length > 0) {
-            params = `set_key=${source}`;
+        if(quizSettings.sourceType === SOURCE_TYPE_SET) {
+            params = `set_key=${quizSettings.source}`;
         } else {
-            // or is it a deck list?
-            const list = source
+            const list = quizSettings.source
                 .split('\n')
                 .map(line => `name=${line.substring(2)}`);
             params = list.join('&')
@@ -50,7 +53,7 @@ const Quiz = () => {
                 setIsLoading(false);
             });
 
-    }, [fields, source, game, navigate]);
+    }, [quizSettings, game, navigate]);
 
     const randomCard = cards[Math.floor(Math.random() * cards.length)];
 
@@ -61,13 +64,11 @@ const Quiz = () => {
                 isLoading ? (
                     <ProgressBar />
                 ) : (
-                    <div className={styles.cardPreview}>
-                        <Preview
-                            image={`${config[game].cdn.cards}/${randomCard.set.key}/${randomCard.number}-md.png`}
-                            game={game}
-                            hide={fields.filter(field => field.checked).map(field => field.key)}
-                        />
-                    </div>
+                    <Preview
+                        image={`${config[game].cdn.cards}/${randomCard.set.key}/${randomCard.number}-md.png`}
+                        game={game}
+                        hide={quizSettings.fields.filter(field => field.checked).map(field => field.key)}
+                    />
                 )
             }
 

@@ -4,7 +4,7 @@ import ToggleButton from 'react-toggle-button';
 import config from '../../config/games';
 import styles from './Setup.module.css';
 import { SelectedGameContext } from '../../contexts/SelectedGameContext';
-import { QuizSettingsContext } from '../../contexts/QuizSettingsContext';
+import { QuizSettingsContext, SOURCE_TYPE_DECK, SOURCE_TYPE_SET } from '../../contexts/QuizSettingsContext';
 import ProgressBar from '../../components/ProgressBar';
 import Preview from '../../components/Preview';
 import Button from '../../components/Button';
@@ -13,13 +13,14 @@ import Button from '../../components/Button';
 const Setup = () => {
     const navigate = useNavigate();
     const { game } = useContext(SelectedGameContext);
-    const { setSelectedFields, setSelectedSource } = useContext(QuizSettingsContext);
+    const { setQuizSettings } = useContext(QuizSettingsContext);
     const [settings, setSettings] = useState(null);
     const [fields, setFields] = useState(null);
     const [sourceType, setSourceType] = useState('');
     const [cards, setCards] = useState('');
     const [cardSet,setCardSet] = useState('');
     const [maxNumberOfQuestions, setMaxNumberOfQuestions] = useState(10);
+    const [questionType, setQuestionType] = useState('multiple');
 
     useEffect(() => {
         if (game === null) {
@@ -70,8 +71,14 @@ const Setup = () => {
             return;
         }
 
-        setSelectedFields(fields);
-        setSelectedSource(sourceType === 'set' ? cardSet : cards);
+        setQuizSettings({
+            fields: fields.filter(field => field.checked),
+            source: sourceType === SOURCE_TYPE_SET ? cardSet : cards,
+            maxNumberOfQuestions,
+            questionType,
+            sourceType,
+        });
+
         navigate('/quiz');
     }
 
@@ -134,11 +141,11 @@ const Setup = () => {
                             onChange={(e) => setSourceType(e.target.value)}
                         >
                             <option>Select source</option>
-                            <option value="set">Official Set</option>
-                            <option value="decklist">Deck List</option>
+                            <option value={SOURCE_TYPE_SET}>Official Set</option>
+                            <option value={SOURCE_TYPE_DECK}>Deck List</option>
                         </select>
                         {
-                            sourceType === 'set' && (
+                            sourceType === SOURCE_TYPE_SET && (
                                 settings.sets.map((set) => (
                                   <div key={set.key} className={styles.setRadio}>
                                       <label htmlFor={set.key}>{set.name}</label>
@@ -148,7 +155,7 @@ const Setup = () => {
                             )
                         }
                         {
-                            sourceType === 'decklist' && (
+                            sourceType === SOURCE_TYPE_DECK && (
                                 <textarea
                                     className={styles.cardsTextarea}
                                     value={cards}
