@@ -2,40 +2,37 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 
-import {
-    createBrowserRouter,
-    RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, } from 'react-router-dom';
 
 import Root from './pages/Root';
 import Games from './pages/Games';
 import About from './pages/About';
 import Error from './pages/Error';
-import SelectedGameProvider from "./contexts/SelectedGameContext";
-import Setup from "./pages/Setup";
-import Quiz from "./pages/Quiz";
-import QuizSettingsProvider from "./contexts/QuizSettingsContext";
+import SelectedGameProvider from './contexts/SelectedGameContext';
+import Setup from './pages/Setup';
+import Quiz from './pages/Quiz';
+import QuizSettingsProvider from './contexts/QuizSettingsContext';
 
 const router = createBrowserRouter([
     {
-        path: "/",
+        path: '/',
         element: <Root/>,
         errorElement: <Error/>,
         children: [
             {
-                path: "/games",
+                path: '/games',
                 element: <Games/>
             },
             {
-                path: "/setup",
+                path: '/setup',
                 element: <Setup/>
             },
             {
-                path: "/quiz",
+                path: '/quiz',
                 element: <Quiz/>
             },
             {
-                path: "/about",
+                path: '/about',
                 element: <About/>
             }
         ]

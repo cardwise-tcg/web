@@ -1,11 +1,7 @@
 import styles from './Quiz.module.css';
 import { useContext, useEffect, useState } from 'react';
 import { SelectedGameContext } from '../../contexts/SelectedGameContext';
-import {
-    areSettingsValid,
-    QuizSettingsContext,
-    SOURCE_TYPE_SET
-} from '../../contexts/QuizSettingsContext';
+import { areSettingsValid, QuizSettingsContext, SOURCE_TYPE_SET } from '../../contexts/QuizSettingsContext';
 import { useNavigate } from 'react-router-dom';
 import config from '../../config/games';
 import ProgressBar from '../../components/ProgressBar';
@@ -19,7 +15,7 @@ const Quiz = () => {
     const [cards, setCards] = useState([]);
 
     useEffect(() => {
-        if(game === null) {
+        if (game === null) {
             return;
         }
 
@@ -28,16 +24,16 @@ const Quiz = () => {
             return;
         }
 
-        if(quizSettings.sourceType === SOURCE_TYPE_SET) {
-           if(!config[game].sets.filter(set => quizSettings.source === set.key).length) {
-               navigate('/setup');
-               return;
-           }
+        if (quizSettings.sourceType === SOURCE_TYPE_SET) {
+            if (!config[game].sets.filter(set => quizSettings.source === set.key).length) {
+                navigate('/setup');
+                return;
+            }
         }
 
         let params = ``;
 
-        if(quizSettings.sourceType === SOURCE_TYPE_SET) {
+        if (quizSettings.sourceType === SOURCE_TYPE_SET) {
             params = `set_key=${quizSettings.source}`;
         } else {
             const list = quizSettings.source
@@ -62,7 +58,7 @@ const Quiz = () => {
             <h1>Quiz</h1>
             {
                 isLoading ? (
-                    <ProgressBar />
+                    <ProgressBar/>
                 ) : (
                     <Preview
                         image={`${config[game].cdn.cards}/${randomCard.set.key}/${randomCard.number}-md.png`}

@@ -31,7 +31,5 @@ export default {
             type: 'enum',
         },
     ],
-    sets: [
-
-    ]
+    sets: []
 };

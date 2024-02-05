@@ -4,10 +4,10 @@ import lorcana from '../../assets/lorcana.png';
 import pokemon from '../../assets/pokemon.png';
 import swu from '../../assets/swu.webp';
 
-import Button from "../../components/Button";
-import { SelectedGameContext } from "../../contexts/SelectedGameContext";
-import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import Button from '../../components/Button';
+import { SelectedGameContext } from '../../contexts/SelectedGameContext';
+import { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Games = () => {
     const navigate = useNavigate();

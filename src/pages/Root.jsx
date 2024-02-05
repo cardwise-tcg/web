@@ -1,4 +1,4 @@
-import {useOutlet} from 'react-router-dom';
+import { useOutlet } from 'react-router-dom';
 
 import styles from './Root.module.css';
 import Header from '../components/Header';
@@ -24,7 +24,9 @@ const Root = () => {
                         </h2>
 
                         <p>
-                            Dive into the world of Trading Card Games like never before! <strong>CardWise</strong> is your ultimate digital companion, transforming the way you learn and master your favorite TCGs.
+                            Dive into the world of Trading Card Games like never before! <strong>CardWise</strong> is
+                            your ultimate digital companion, transforming the way you learn and master your favorite
+                            TCGs.
                         </p>
 
                         <ButtonLink

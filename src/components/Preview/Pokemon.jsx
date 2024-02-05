@@ -1,5 +1,5 @@
 import styles from './Pokemon.module.css';
-import { ucfirst } from "../../utilities/strings";
+import { ucfirst } from '../../utilities/strings';
 
 const Pokemon = ({ image, hide }) => {
 

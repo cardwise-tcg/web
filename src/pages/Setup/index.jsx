@@ -18,7 +18,7 @@ const Setup = () => {
     const [fields, setFields] = useState(null);
     const [sourceType, setSourceType] = useState('');
     const [cards, setCards] = useState('');
-    const [cardSet,setCardSet] = useState('');
+    const [cardSet, setCardSet] = useState('');
     const [maxNumberOfQuestions, setMaxNumberOfQuestions] = useState(10);
     const [questionType, setQuestionType] = useState('multiple');
 
@@ -120,7 +120,7 @@ const Setup = () => {
                                 <ToggleButton
                                     activeLabel={''}
                                     inactiveLabel={''}
-                                    value={ field.checked }
+                                    value={field.checked}
                                     onToggle={(value) => handleFieldChange(!value, field.key)}
                                 />
                             </div>
@@ -147,10 +147,11 @@ const Setup = () => {
                         {
                             sourceType === SOURCE_TYPE_SET && (
                                 settings.sets.map((set) => (
-                                  <div key={set.key} className={styles.setRadio}>
-                                      <label htmlFor={set.key}>{set.name}</label>
-                                      <input type="radio" name="set" id={set.key} value={set.key} onChange={(e) => setCardSet(e.target.value)}/>
-                                  </div>
+                                    <div key={set.key} className={styles.setRadio}>
+                                        <label htmlFor={set.key}>{set.name}</label>
+                                        <input type="radio" name="set" id={set.key} value={set.key}
+                                               onChange={(e) => setCardSet(e.target.value)}/>
+                                    </div>
                                 ))
                             )
                         }

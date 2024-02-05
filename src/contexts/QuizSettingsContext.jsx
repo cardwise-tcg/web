@@ -1,6 +1,4 @@
-
-import { createContext, useEffect, useReducer, useState } from 'react';
-import config from '../config/games';
+import { createContext, useEffect, useReducer } from 'react';
 
 export const QuizSettingsContext = createContext(null);
 
@@ -26,9 +24,9 @@ const initialQuizSettings = {
 };
 
 export const areSettingsValid = (quizSettings) => {
-    if(!quizSettings) return false;
-    if(!quizSettings.fields || !quizSettings.source) return false;
-    if(!quizSettings.sourceType) return false;
+    if (!quizSettings) return false;
+    if (!quizSettings.fields || !quizSettings.source) return false;
+    if (!quizSettings.sourceType) return false;
 
     return true;
 };
@@ -53,13 +51,13 @@ const QuizSettingsProvider = ({ children }) => {
     });
 
     useEffect(() => {
-        if(areSettingsValid(quizSettings)) {
+        if (areSettingsValid(quizSettings)) {
             localStorage.setItem(QUIZ_SETTINGS_KEY, JSON.stringify(quizSettings));
         }
-    },[quizSettings]);
+    }, [quizSettings]);
 
     const setQuizSettings = (value) => {
-        dispatch({ type: ACTION_UPDATE, payload: value});
+        dispatch({ type: ACTION_UPDATE, payload: value });
     };
 
     return (

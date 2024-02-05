@@ -19,7 +19,7 @@
     .page-games {
         padding: 20px 0;
     }
-    
+
     .page-games .games-list {
         grid-template-columns: repeat(4, 1fr);
     }

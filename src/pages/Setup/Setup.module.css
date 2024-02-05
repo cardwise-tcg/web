@@ -17,6 +17,7 @@
     flex: 1;
     flex-direction: column;
 }
+
 .page-setup .preview {
     text-align: center;
 }
@@ -49,6 +50,7 @@
     height: 200px;
     resize: none;
 }
+
 .page-setup .cards-container .source-select {
     width: 100%;
     margin-bottom: 10px;
@@ -72,7 +74,7 @@
     text-align: center;
 }
 
-.page-setup .answer-radio{
+.page-setup .answer-radio {
     margin-bottom: 0;
     font-size: 1rem;
 }

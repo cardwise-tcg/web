@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react';
-import { availableGames } from "../config/games";
+import { availableGames } from '../config/games';
 
 export const SelectedGameContext = createContext(null);
 
