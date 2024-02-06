@@ -1,0 +1,9 @@
+.page-about .img-container {
+    text-align: center;
+}
+
+.page-about .img-container img {
+    padding: 4px;
+    border: 1px solid var(--color-light);
+    border-radius: 12px;
+}
