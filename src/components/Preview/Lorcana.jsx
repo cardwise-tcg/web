@@ -1,11 +1,31 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import styles from './Lorcana.module.css';
 import lorcana from '../../config/games/lorcana';
+import inkableOverlayImage from '../../assets/lorcana/inkable.svg';
+import willpowerOverlayImage from '../../assets/lorcana/willpower.svg';
 
 const Lorcana = ({ image, types, hide }) => {
     const canvasRef = useRef(null);
     const cardImageRef = useRef(null);
+
+    const [inkableOverlay, setInkableOverlay] = useState(null);
+    const [willpowerOverlay, setWillpowerOverlay] = useState(null);
+
+    useEffect(() => {
+        const _inkableOverlay = new Image();
+        _inkableOverlay.src = inkableOverlayImage;
+
+        _inkableOverlay.onload = () => {
+            setInkableOverlay(_inkableOverlay);
+        }
+
+        const _willpowerOverlay = new Image();
+        _willpowerOverlay.src = willpowerOverlayImage;
+        _willpowerOverlay.onload = () => {
+            setWillpowerOverlay(_willpowerOverlay);
+        }
+    }, []);
 
     useEffect(() => {
         const canvas = canvasRef.current;
@@ -22,6 +42,11 @@ const Lorcana = ({ image, types, hide }) => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
+
+        if(inkableOverlay === null || willpowerOverlay === null) {
+            console.log('overlays not ready');
+            return;
+        }
 
         cardImageRef.current = new Image(lorcana.canvas.CARD_WIDTH, lorcana.canvas.CARD_HEIGHT);
         cardImageRef.current.src = image;
@@ -52,11 +77,11 @@ const Lorcana = ({ image, types, hide }) => {
             }
 
             if (hide.includes('willpower') && types.includes('Character')) {
-                lorcana.canvas.hideWillpower(context);
+                lorcana.canvas.hideWillpower(context, willpowerOverlay);
             }
 
             if (hide.includes('inkable')) {
-                lorcana.canvas.hideInkable(context);
+                lorcana.canvas.hideInkable(context, inkableOverlay);
             }
 
             if (hide.includes('rarity')) {
@@ -72,7 +97,7 @@ const Lorcana = ({ image, types, hide }) => {
             }
         }
 
-    }, [hide, canvasRef, image]);
+    }, [hide, canvasRef, image, inkableOverlay, willpowerOverlay]);
 
     return (
         <div className={styles.lorcana}>

@@ -54,16 +54,11 @@ export const hideCost = (context) => {
     _drawHexagon(context, x, y, r);
 };
 
-export const hideInkable = (context) => {
+export const hideInkable = (context, overlay) => {
     const width = 56,
         height = 54;
 
-    const overlay = new Image();
-    overlay.src = inkableOverlay;
-
-    overlay.onload = () => {
-        context.drawImage(overlay, 5, 8, width, height);
-    }
+    context.drawImage(overlay, 5, 8, width, height);
 };
 
 export const hideStrength = (context) => {
@@ -80,22 +75,18 @@ export const hideStrength = (context) => {
     context.fill();
 };
 
-export const hideWillpower = (context) => {
+export const hideWillpower = (context, overlay) => {
     const width = 36,
         height = 40;
 
-    const overlay = new Image();
-    overlay.src = strengthOverlay;
-
-    overlay.onload = () => {
-        context.drawImage(
-            overlay,
-            CARD_WIDTH - (width + 16),
-            (CARD_HEIGHT / 2) + (height / 2),
-            width,
-            height
-        );
-    }
+    console.log(typeof overlay);
+    context.drawImage(
+        overlay,
+        CARD_WIDTH - (width + 16),
+        (CARD_HEIGHT / 2) + (height / 2),
+        width,
+        height
+    );
 };
 
 export const hideRarity = (context) => {

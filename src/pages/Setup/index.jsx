@@ -90,12 +90,8 @@ const Setup = () => {
     return (
         <div className={styles.pageSetup}>
             <h2>
-                {settings.name} &raquo; Setup
+                {settings.name} &raquo; Setup Quiz
             </h2>
-            <p className={styles.description}>
-                Toggle the fields you want to include in your quiz. Use the preview to see how your
-                hints will look like.
-            </p>
             <div className={styles.twoColumns}>
                 <div className={styles.column}>
                     <div className={styles.preview}>
@@ -159,6 +155,7 @@ const Setup = () => {
                         {
                             sourceType === SOURCE_TYPE_DECK && (
                                 <textarea
+                                    placeholder="Supports dreamborn.ink exported deck lists..."
                                     className={styles.cardsTextarea}
                                     value={cards}
                                     onChange={(e) => setCards(e.target.value)}
