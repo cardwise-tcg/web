@@ -129,7 +129,7 @@ export const generate = (numberOfQuestions, cards, fields) => {
                     break;
 
                 case 'rarity':
-                    values = fields.find(field => field.key === 'rarity').values;
+                    values = fields.find(field => field.key === 'rarity').values.filter(value => value !== card.rarity);
                     text = `What is the rarity of the card?`;
                     answer = card.rarity;
                     options = randomElements(values, 2)
