@@ -1,7 +1,7 @@
 @import "normalize.css";
 
 :root {
-    font-size: 0.8rem;
+    font-size: 1rem;
     --color-text: #2e2e2e;
     --color-muted: #656464;
     --color-primary: #395ca7;

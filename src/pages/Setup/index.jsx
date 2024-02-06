@@ -106,6 +106,7 @@ const Setup = () => {
                             game={game}
                             image={settings.preview}
                             hide={fields.filter(field => field.checked).map(field => field.key)}
+                            types={['Character']}
                         />
                     </div>
                 </div>

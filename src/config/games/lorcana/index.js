@@ -1,6 +1,37 @@
-import preview from '../../assets/lorcana/setup.png';
+import preview from '../../../assets/lorcana/setup.png';
+
+import {
+    CARD_WIDTH,
+    CARD_HEIGHT,
+    hideInk,
+    hideLore,
+    hideCost,
+    hideInkable,
+    hideWillpower,
+    hideStrength,
+    hideRarity,
+    hideClassifications,
+    hideText,
+} from './canvas';
+import { generate } from './questions';
 
 export default {
+    canvas: {
+        CARD_WIDTH,
+        CARD_HEIGHT,
+        hideInk,
+        hideLore,
+        hideCost,
+        hideInkable,
+        hideWillpower,
+        hideStrength,
+        hideRarity,
+        hideClassifications,
+        hideText,
+    },
+    questions: {
+        generate,
+    },
     is_available: true,
     name: 'Lorcana',
     preview,
@@ -22,32 +53,39 @@ export default {
                 'Emerald',
                 'Sapphire',
                 'Steel'
-            ]
+            ],
+            types: ['Character', 'Item', 'Action', 'Song'],
         },
         {
             key: 'lore',
             name: 'Lore',
             type: 'number',
+            characterOnly: true,
+            types: ['Character'],
         },
         {
             key: 'cost',
             name: 'Cost',
             type: 'number',
+            types: ['Character', 'Item', 'Action', 'Song'],
         },
         {
             key: 'inkable',
             name: 'Inkable',
             type: 'boolean',
+            types: ['Character', 'Item', 'Action', 'Song'],
         },
         {
             key: 'willpower',
             name: 'Willpower',
             type: 'number',
+            types: ['Character'],
         },
         {
             key: 'strength',
             name: 'Strength',
             type: 'number',
+            types: ['Character'],
         },
         {
             key: 'rarity',
@@ -61,17 +99,20 @@ export default {
                 'Legendary',
                 'Enchanted',
                 'Promo'
-            ]
+            ],
+            types: ['Character', 'Item', 'Action', 'Song'],
         },
         {
             key: 'classifications',
             name: 'Classifications',
             type: 'text',
+            types: ['Character'],
         },
         {
             key: 'text',
             name: 'Text',
             type: 'text',
+            types: ['Character', 'Item', 'Action', 'Song'],
         }
     ],
     sets: [

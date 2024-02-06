@@ -7,4 +7,5 @@
 .card-preview img {
     width: 327px;
     height: 450px;
+    border-radius: 4px;
 }
