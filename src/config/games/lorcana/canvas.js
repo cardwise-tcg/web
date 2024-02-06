@@ -1,7 +1,3 @@
-
-import inkableOverlay from '../../../assets/lorcana/inkable.svg';
-import strengthOverlay from '../../../assets/lorcana/willpower.svg';
-
 export const CARD_WIDTH = 330;
 export const CARD_HEIGHT = 450;
 

@@ -35,7 +35,8 @@ const About = () => (
 
         <h2>Bugs & Suggestions</h2>
         <p>
-            If you find any bugs or have any suggestions, please feel free to open an issue on the project's GitHub page that can be found in the footer of this page. You can also find me on Discord as <strong>fakeheal</strong>.
+            If you find any bugs or have any suggestions, please feel free to open an issue on the project's GitHub page
+            that can be found in the footer of this page. You can also find me on Discord as <strong>fakeheal</strong>.
         </p>
     </div>
 );

@@ -1,5 +1,4 @@
 import { randomElements, randomizeSort, randomNumber, randomSimilarNumbers } from '../../../utilities/random';
-import { number } from 'prop-types';
 
 /**
  * Existing keywords in the game so far.
@@ -144,7 +143,7 @@ export const generate = (numberOfQuestions, cards, fields) => {
                     options.add(answer);
                     while (options.size < 3) {
                         let randomOption = randomElements(KEYWORDS, randomNumber(1, 2)).join(', ');
-                        if(randomNumber(10,  25) === 13) {
+                        if (randomNumber(10, 25) === 13) {
                             randomOption = 'None of those';
                         }
                         options.add(randomOption);

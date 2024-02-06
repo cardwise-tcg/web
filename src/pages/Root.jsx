@@ -9,14 +9,14 @@ import ButtonLink from '../components/ButtonLink';
 const Root = () => {
     const outlet = useOutlet();
 
-    if(outlet) {
+    if (outlet) {
         return (
             <div className={styles.appContainer}>
                 <div>
                     <Header/>
                     {outlet}
                 </div>
-                <Footer />
+                <Footer/>
             </div>
         )
     }

@@ -43,7 +43,7 @@ const Lorcana = ({ image, types, hide }) => {
         const canvas = canvasRef.current;
         const context = canvas.getContext('2d');
 
-        if(inkableOverlay === null || willpowerOverlay === null) {
+        if (inkableOverlay === null || willpowerOverlay === null) {
             return;
         }
 

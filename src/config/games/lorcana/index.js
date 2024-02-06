@@ -1,17 +1,17 @@
 import preview from '../../../assets/lorcana/setup.png';
 
 import {
-    CARD_WIDTH,
     CARD_HEIGHT,
-    hideInk,
-    hideLore,
-    hideCost,
-    hideInkable,
-    hideWillpower,
-    hideStrength,
-    hideRarity,
+    CARD_WIDTH,
     hideClassifications,
+    hideCost,
+    hideInk,
+    hideInkable,
+    hideLore,
+    hideRarity,
+    hideStrength,
     hideText,
+    hideWillpower,
 } from './canvas';
 import { generate } from './questions';
 
