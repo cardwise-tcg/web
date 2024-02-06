@@ -79,7 +79,6 @@ export const hideWillpower = (context, overlay) => {
     const width = 36,
         height = 40;
 
-    console.log(typeof overlay);
     context.drawImage(
         overlay,
         CARD_WIDTH - (width + 16),

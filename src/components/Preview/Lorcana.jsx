@@ -44,7 +44,6 @@ const Lorcana = ({ image, types, hide }) => {
         const context = canvas.getContext('2d');
 
         if(inkableOverlay === null || willpowerOverlay === null) {
-            console.log('overlays not ready');
             return;
         }
 

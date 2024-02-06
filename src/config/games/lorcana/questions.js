@@ -148,7 +148,6 @@ export const generate = (numberOfQuestions, cards, fields) => {
                             randomOption = 'None of those';
                         }
                         options.add(randomOption);
-                        console.log(randomOption)
                     }
                     options = Array.from(options).sort(randomizeSort);
                     break;
