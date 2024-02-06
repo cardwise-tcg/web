@@ -83,7 +83,7 @@ export const generate = (numberOfQuestions, cards, fields) => {
             let values = [];
             switch (field.key) {
                 case 'ink':
-                    values = fields.find(field => field.key === 'ink').values;
+                    values = fields.find(field => field.key === 'ink').values.filter(value => value !== card.ink);
                     text = `What is the ink of the card?`;
                     answer = card.ink;
                     options = randomElements(values, 2)
