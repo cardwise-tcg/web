@@ -39,7 +39,7 @@ export default {
         cards: 'https://api.cardwise.itodorova.dev/lorcana/cards',
     },
     cdn: {
-        cards: 'http://cdn.cardwise.itodorova.dev/lorcana',
+        cards: 'https://cdn.cardwise.itodorova.dev/lorcana',
     },
     fields: [
         {

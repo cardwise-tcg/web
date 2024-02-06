@@ -49,6 +49,7 @@ const Lorcana = ({ image, types, hide }) => {
 
         cardImageRef.current = new Image(lorcana.canvas.CARD_WIDTH, lorcana.canvas.CARD_HEIGHT);
         cardImageRef.current.src = image;
+        cardImageRef.current.crossOrigin = 'https://cardwise.itodorova.dev';
 
         cardImageRef.current.onload = () => {
             context.drawImage(
